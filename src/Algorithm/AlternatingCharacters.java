@@ -23,31 +23,31 @@ public class AlternatingCharacters {
     }
     private static void printDeletions(List<String> sl)
     {
-        System.out.println(countDeletions(sl));
+        for(String s: sl) {
+            System.out.println(countDeletions(s));
+        }
     }
-    private static int countDeletions(List<String> sl)
+    private static int countDeletions(String sl)
     {
         int noOfDeletions =0;
-        for(int i =0 ; i< sl.size();i++){
-            String str = sl.get(i);
-            int curr = 0;
-            int next;
-            char [] cArray = str.toCharArray();
-            if (str.length() == 1 ) return 0;
-            else{
-                 next = 1;
+        String str = sl;
+        int curr = 0;
+        int next;
+        char [] cArray = str.toCharArray();
+        if (str.length() == 1 ) return 0;
+        else{
+             next = 1;
+        }
+        while(next < str.length())
+        {
+            if(cArray[curr] == cArray[next]) {
+                noOfDeletions++;
             }
-            while(next < str.length())
+            else
             {
-                if(cArray[curr] == cArray[next]) {
-                    noOfDeletions++;
-                }
-                else
-                {
-                    curr = next;
-                }
-                next++;
+                curr = next;
             }
+            next++;
         }
         return noOfDeletions;
     }
